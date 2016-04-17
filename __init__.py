@@ -1,0 +1,1 @@
+from .stockfighter import Stockfighter
