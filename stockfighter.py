@@ -108,4 +108,5 @@ class Stockfighter():
             print('Web socket closed.\nCode: {}\nReason: {}'.format(code, reason))
 
         def received_message(self, message):
-            self.callback(message)
+            data = json.loads(message.data.decode('utf-8'))
+            self.callback(data)
