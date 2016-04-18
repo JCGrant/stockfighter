@@ -87,6 +87,13 @@ class Stockfighter():
         r = self.session.get(url)
         return r.json()
 
+    def cancel_all(self, stock=None):
+        orders = self.orders(stock)['orders']
+        for order in orders:
+            if order['open']:
+                self.cancel(order['id'], order['symbol'])
+
+
 
     class WebSocketClient(WebSocketBaseClient):
         def __init__(self, url, callback, websocket_manager):
